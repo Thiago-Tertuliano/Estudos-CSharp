@@ -101,11 +101,6 @@ Após completar o curso, crie projetos práticos:
 - [C# Documentation](https://docs.microsoft.com/pt-br/dotnet/csharp/)
 - [.NET Documentation](https://docs.microsoft.com/pt-br/dotnet/)
 
-### Cursos Online
-- Microsoft Learn: C# Fundamentals
-- Pluralsight: C# Path
-- Udemy: C# Complete Course
-
 ### Comunidades
 - Stack Overflow
 - Reddit: r/csharp
