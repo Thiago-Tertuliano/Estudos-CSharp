@@ -104,11 +104,6 @@ Após completar o curso, implemente:
 - [.NET Performance](https://docs.microsoft.com/pt-br/dotnet/standard/garbage-collection/)
 - [Design Patterns](https://docs.microsoft.com/pt-br/dotnet/standard/modern-web-apps-azure-architecture/)
 
-### Cursos Online
-- Microsoft Learn: Advanced C# Path
-- Pluralsight: Advanced C# Programming
-- Udemy: Enterprise C# Development
-
 ### Comunidades
 - Stack Overflow
 - Reddit: r/csharp
