@@ -97,11 +97,6 @@ Após completar o curso, crie projetos práticos:
 - [.NET Documentation](https://docs.microsoft.com/pt-br/dotnet/)
 - [LINQ Documentation](https://docs.microsoft.com/pt-br/dotnet/csharp/programming-guide/concepts/linq/)
 
-### Cursos Online
-- Microsoft Learn: C# Advanced
-- Pluralsight: C# Advanced Path
-- Udemy: Advanced C# Programming
-
 ### Comunidades
 - Stack Overflow
 - Reddit: r/csharp
