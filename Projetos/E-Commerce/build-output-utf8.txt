@@ -1,0 +1,17 @@
+﻿  Determinando os projetos a serem restaurados...
+D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\E-Commerce.csproj : warning NU1603: E-Commerce depende de Swashbuckle.AspNetCore (>= 10.0.9), mas Swashbuckle.AspNetCore 10.0.9 n├úo foi encontrado. Swashbuckle.AspNetCore 10.1.0 foi resolvido em vez disso.
+  Todos os projetos est├úo atualizados para restaura├º├úo.
+D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\E-Commerce.csproj : warning NU1603: E-Commerce depende de Swashbuckle.AspNetCore (>= 10.0.9), mas Swashbuckle.AspNetCore 10.0.9 n├úo foi encontrado. Swashbuckle.AspNetCore 10.1.0 foi resolvido em vez disso.
+D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\Controllers\OrderController.cs(9,22): error CS0246: O nome do tipo ou do namespace "IOrderService" n├úo pode ser encontrado (est├í faltando uma diretiva using ou uma refer├¬ncia de assembly?) [D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\E-Commerce.csproj]
+D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\Controllers\OrderController.cs(10,28): error CS0246: O nome do tipo ou do namespace "IOrderService" n├úo pode ser encontrado (est├í faltando uma diretiva using ou uma refer├¬ncia de assembly?) [D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\E-Commerce.csproj]
+
+FALHA da compila├º├úo.
+
+D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\E-Commerce.csproj : warning NU1603: E-Commerce depende de Swashbuckle.AspNetCore (>= 10.0.9), mas Swashbuckle.AspNetCore 10.0.9 n├úo foi encontrado. Swashbuckle.AspNetCore 10.1.0 foi resolvido em vez disso.
+D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\E-Commerce.csproj : warning NU1603: E-Commerce depende de Swashbuckle.AspNetCore (>= 10.0.9), mas Swashbuckle.AspNetCore 10.0.9 n├úo foi encontrado. Swashbuckle.AspNetCore 10.1.0 foi resolvido em vez disso.
+D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\Controllers\OrderController.cs(9,22): error CS0246: O nome do tipo ou do namespace "IOrderService" n├úo pode ser encontrado (est├í faltando uma diretiva using ou uma refer├¬ncia de assembly?) [D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\E-Commerce.csproj]
+D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\Controllers\OrderController.cs(10,28): error CS0246: O nome do tipo ou do namespace "IOrderService" n├úo pode ser encontrado (est├í faltando uma diretiva using ou uma refer├¬ncia de assembly?) [D:\Carreira\Thiago Matos Tertuliano - Carreira\Cursos\ESTUDOS-3CON\Curso-C#-NET\Projetos\E-Commerce\E-Commerce.csproj]
+    2 Aviso(s)
+    2 Erro(s)
+
+Tempo Decorrido 00:00:07.83
