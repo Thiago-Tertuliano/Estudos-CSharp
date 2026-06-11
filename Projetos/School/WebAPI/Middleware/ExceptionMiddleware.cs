@@ -1,4 +1,5 @@
 using FluentValidation;
+using School.Application.Common.Exceptions;
 
 public class ExceptionMiddleware(RequestDelegate next)
 {

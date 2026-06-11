@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using School.Application.Common.Exceptions;
 using School.Application.Common.Interfaces;
 
 namespace School.Application.Courses.Commands.AssignGrade;

@@ -1,0 +1,27 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.sln.docstates
+*.userprefs
+.vs/
+*.DotSettings
+
+## SQLite
+*.db
+*.db-shm
+*.db-wal
+
+## Logs
+logs/
+
+## IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+## OS
+.DS_Store
+Thumbs.db
