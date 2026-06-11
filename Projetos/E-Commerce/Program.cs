@@ -8,7 +8,7 @@ using E_Commerce.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<EcommerceContext>(options =>
-    options.UseSqlite("Data Source=ecommerce.db"));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();

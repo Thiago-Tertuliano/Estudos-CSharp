@@ -1,10 +1,13 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using School.Application.Common.Exceptions;
 using School.Application.Common.Interfaces;
 using School.Domain.Entities;
 
+namespace School.Application.Students.Commands.EnrollStudent;
+
 public class EnrollStudentCommandHandler(IApplicationDbContext context)
-    : IRequestHandler<EnrollStudentCommand>  // sem <EnrollmentDto>
+    : IRequestHandler<EnrollStudentCommand>
 {
     public async Task Handle(EnrollStudentCommand request, CancellationToken ct)
     {
@@ -32,20 +35,5 @@ public class EnrollStudentCommandHandler(IApplicationDbContext context)
 
         context.Enrollments.Add(enrollment);
         await context.SaveChangesAsync(ct);
-    }
-}
-
-public class NotFoundException : Exception
-{
-    public NotFoundException()
-    {
-    }
-
-    public NotFoundException(string? message) : base(message)
-    {
-    }
-
-    public NotFoundException(string? message, Exception? innerException) : base(message, innerException)
-    {
     }
 }
