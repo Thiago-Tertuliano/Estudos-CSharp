@@ -1,0 +1,59 @@
+@page "/chat"
+@attribute [Authorize]
+@inject Services.ApiService Api
+@inject NavigationManager Navigation
+
+<div class="container">
+    <h2>Chat</h2>
+    <p>Funcionalidade de chat em tempo real via SignalR.</p>
+
+    <div class="card">
+        <div class="card-body" style="height: 400px; overflow-y: auto;">
+            @foreach (var msg in _messages)
+            {
+                <div class="mb-2 p-2 rounded @(msg.SenderId == _currentUserId ? "bg-primary text-white ms-5" : "bg-light me-5")">
+                    <small class="fw-bold">@msg.SenderName</small>
+                    <p class="mb-0">@msg.Content</p>
+                    <small class="opacity-75">@msg.SentAt.ToLocalTime().ToString("HH:mm")</small>
+                </div>
+            }
+        </div>
+        <div class="card-footer">
+            <div class="input-group">
+                <input class="form-control" placeholder="Digite sua mensagem..." @bind="_newMessage"
+                       @onkeypress="HandleKeyPress" />
+                <button class="btn btn-primary" @onclick="SendMessage">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Guid _currentUserId;
+    private List<MessageDto> _messages = [];
+    private string _newMessage = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var user = await Api.GetMeAsync();
+        if (user is not null)
+            _currentUserId = user.Id;
+    }
+
+    private async Task HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+            await SendMessage();
+    }
+
+    private async Task SendMessage()
+    {
+        if (string.IsNullOrWhiteSpace(_newMessage)) return;
+        var msg = await Api.SendMessageAsync(Guid.Empty, _newMessage);
+        if (msg is not null)
+        {
+            _messages.Add(msg);
+            _newMessage = "";
+        }
+    }
+}
