@@ -1,0 +1,6 @@
+@Notifica.Api_HostAddress = http://localhost:5206
+
+GET {{Notifica.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

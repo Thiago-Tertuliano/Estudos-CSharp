@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Notifica.Api/Notifica.Api.csproj" />
+    <Project Path="src/Notifica.Application/Notifica.Application.csproj" />
+    <Project Path="src/Notifica.Domain/Notifica.Domain.csproj" />
+    <Project Path="src/Notifica.Grpc/Notifica.Grpc.csproj" />
+    <Project Path="src/Notifica.Infrastructure/Notifica.Infrastructure.csproj" />
+    <Project Path="src/Notifica.Web/Notifica.Web.csproj" />
+    <Project Path="src/Notifica.Worker/Notifica.Worker.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Notifica.IntegrationTests/Notifica.IntegrationTests.csproj" />
+  </Folder>
+</Solution>

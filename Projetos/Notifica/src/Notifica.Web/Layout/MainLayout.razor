@@ -1,0 +1,68 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+@inject Services.ApiService Api
+@inject Services.SignalRService SignalR
+@inject Services.StorageService Storage
+
+<div class="sidebar">
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Notifica</span>
+            @if (!string.IsNullOrEmpty(_token))
+            {
+                <button class="btn btn-outline-light btn-sm" @onclick="Logout">Sair</button>
+            }
+        </div>
+    </nav>
+    <div class="p-3">
+        @if (!string.IsNullOrEmpty(_token))
+        {
+            <div class="list-group">
+                <NavLink class="list-group-item list-group-item-action" href="" Match="NavLinkMatch.All">Dashboard</NavLink>
+                <NavLink class="list-group-item list-group-item-action" href="chat">Chat</NavLink>
+                <NavLink class="list-group-item list-group-item-action" href="notifications">
+                    Notifica&ccedil;&otilde;es
+                    <span class="badge bg-danger rounded-pill">@_unreadCount</span>
+                </NavLink>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="main-content p-4">
+    @Body
+</div>
+
+@code {
+    private string? _token;
+    private int _unreadCount;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _token = await Storage.GetItemAsync<string>("auth_token");
+        if (!string.IsNullOrEmpty(_token))
+        {
+            Api.SetToken(_token);
+            try
+            {
+                await SignalR.ConnectAsync(_token, Navigation.BaseUri);
+                SignalR.OnNotificationReceived += async n =>
+                {
+                    _unreadCount++;
+                    await InvokeAsync(StateHasChanged);
+                };
+                _unreadCount = await Api.GetUnreadCountAsync();
+            }
+            catch { }
+        }
+    }
+
+    private async Task Logout()
+    {
+        await Storage.DeleteItemAsync("auth_token");
+        Api.ClearToken();
+        await SignalR.DisconnectAsync();
+        _token = null;
+        Navigation.NavigateTo("login", true);
+    }
+}

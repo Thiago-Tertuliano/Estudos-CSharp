@@ -1,0 +1,105 @@
+@page "/login"
+@inject Services.ApiService Api
+@inject Services.StorageService Storage
+@inject NavigationManager Navigation
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title text-center mb-4">Notifica</h3>
+
+                @if (!_isRegister)
+                {
+                    <h5 class="text-center">Entrar</h5>
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="Email" @bind="_email" type="email" />
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="Senha" @bind="_password" type="password" />
+                    </div>
+                    <button class="btn btn-primary w-100 mb-2" @onclick="HandleLogin" disabled="@_loading">
+                        @(_loading ? "Entrando..." : "Entrar")
+                    </button>
+                    <p class="text-center">
+                        <a href="#" @onclick="() => _isRegister = true">Criar conta</a>
+                    </p>
+                }
+                else
+                {
+                    <h5 class="text-center">Cadastrar</h5>
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="Nome" @bind="_name" />
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="Email" @bind="_email" type="email" />
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="Senha" @bind="_password" type="password" />
+                    </div>
+                    <button class="btn btn-success w-100 mb-2" @onclick="Register" disabled="@_loading">
+                        @(_loading ? "Cadastrando..." : "Cadastrar")
+                    </button>
+                    <p class="text-center">
+                        <a href="#" @onclick="() => _isRegister = false">J&aacute; tenho conta</a>
+                    </p>
+                }
+
+                @if (!string.IsNullOrEmpty(_error))
+                {
+                    <div class="alert alert-danger">@_error</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string _name = "";
+    private string _email = "";
+    private string _password = "";
+    private string _error = "";
+    private bool _loading;
+    private bool _isRegister;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var token = await Storage.GetItemAsync<string>("auth_token");
+        if (!string.IsNullOrEmpty(token))
+            Navigation.NavigateTo("");
+    }
+
+    private async Task HandleLogin()
+    {
+        _loading = true;
+        _error = "";
+        try
+        {
+            var result = await Api.LoginAsync(_email, _password);
+            if (result is not null)
+            {
+                await Storage.SetItemAsync("auth_token", result.Token);
+                Navigation.NavigateTo("", true);
+            }
+        }
+        catch (Exception ex) { _error = ex.Message; }
+        finally { _loading = false; }
+    }
+
+    private async Task Register()
+    {
+        _loading = true;
+        _error = "";
+        try
+        {
+            var result = await Api.RegisterAsync(_name, _email, _password);
+            if (result is not null)
+            {
+                await Storage.SetItemAsync("auth_token", result.Token);
+                Navigation.NavigateTo("", true);
+            }
+        }
+        catch (Exception ex) { _error = ex.Message; }
+        finally { _loading = false; }
+    }
+}

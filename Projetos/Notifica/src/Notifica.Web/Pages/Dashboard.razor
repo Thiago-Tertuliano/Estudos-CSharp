@@ -1,0 +1,61 @@
+@page "/"
+@attribute [Authorize]
+@inject Services.ApiService Api
+@inject Services.SignalRService SignalR
+
+<div class="container">
+    <h2>Dashboard</h2>
+    @if (_user is not null)
+    {
+        <div class="alert alert-info">Bem-vindo, @_user.Name!</div>
+    }
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Notifica&ccedil;&otilde;es</h5>
+                    <p class="display-6">@_unreadCount</p>
+                    <small class="text-muted">n&atilde;o lidas</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Mensagens</h5>
+                    <p class="display-6">@_messageUnread</p>
+                    <small class="text-muted">n&atilde;o lidas</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (_lastNotification is not null)
+    {
+        <div class="alert alert-success mt-3">
+            <strong>Nova notifica&ccedil;&atilde;o:</strong> @_lastNotification.Title
+        </div>
+    }
+</div>
+
+@code {
+    private UserDto? _user;
+    private int _unreadCount;
+    private int _messageUnread;
+    private NotificationDto? _lastNotification;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _user = await Api.GetMeAsync();
+        _unreadCount = await Api.GetUnreadCountAsync();
+        _messageUnread = await Api.GetUnreadCountAsync();
+
+        SignalR.OnNotificationReceived += n =>
+        {
+            _lastNotification = n;
+            _unreadCount++;
+            InvokeAsync(StateHasChanged);
+        };
+    }
+}

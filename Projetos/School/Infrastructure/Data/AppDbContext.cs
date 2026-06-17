@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using School.Application.Common.Interfaces;
 using School.Domain.Entities;
-using School.Infrastructure.Data.Configurations;
 
 namespace School.Infrastructure.Data;
 
